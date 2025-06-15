@@ -4,8 +4,8 @@ A minimalist 4-bit CPU simulator written in C++ for educational purposes.
 It demonstrates core CPU design principles such as instruction fetching, decoding, register-based execution, and memory
 access.
 
-Emphasis is placed on simplicity and clarity over hardware realism; the goal is to illustrate how a CPU interprets and
-runs a program.
+Emphasis is placed on simplicity and clarity over hardware realism. The goal is to illustrate how a CPU interprets and
+executes a program.
 
 Due to the limited memory (16 words), the complexity of programs is constrained. However, adding instructions for I/O or
 interaction with external devices would expand its capabilities significantly.
@@ -19,7 +19,7 @@ Still, the design leaves room for future expansion.
 mkdir build && cd build
 cmake ..
 make
-./cpu4bitsim   # runs built-in tests automatically
+./cpu4bitsim   # Runs built-in tests automatically
 ```
 
 ## Architecture Overview
@@ -47,26 +47,26 @@ make
 
 ## Operation
 
-On startup the CPU runs the instruction at memory address 0x0. It then increments the Program Counter(PC) until a
+On startup the CPU runs the instruction at memory address 0x0. It then increments the Program Counter (PC) until a
 `Halt` instruction (OpCode:0) is reached.
 
 ## Instruction Set
 
 Each instruction consists of a 4-bit opcode. Some require additional 4-bit arguments on the following memory line.
 
-| Name   | #  | Code   | Args (4-bit) | Description                      |
-|--------|----|--------|--------------|----------------------------------|
-| Halt   | 00 | `0000` | -            | Stop execution                   |
-| LoadA  | 01 | `0001` | Src Address  | Load value from memory into A    |
-| LoadIA | 02 | `0010` | Value        | Load intermediate value into A   |
-| LoadB  | 03 | `0011` | Src Address  | Load value from memory into B    |
-| StoreA | 04 | `0100` | Dest Address | Store A into memory              |
-| Mov    | 05 | `0101` | Reg0, Reg1   | Copy Reg0 → Reg1                 |
-| Add    | 06 | `0110` | Reg0, Reg1   | A = Reg0 + Reg1                  |
-| Sub    | 07 | `0111` | Reg0, Reg1   | A = Reg0 - Reg1                  |
-| Jump   | 08 | `1000` | Ins Address  | Set PC to address                |
-| JumpZ  | 09 | `1001` | Ins Address  | Jump if previous ALU result == 0 |
-| JumpNZ | 10 | `1010` | Ins Address  | Jump if previous ALU result != 0 |
+| Name   | #  | Code   | Args (4-bit) | Description                    |
+|--------|----|--------|--------------|--------------------------------|
+| Halt   | 00 | `0000` | -            | Stop execution                 |
+| LoadA  | 01 | `0001` | Src Address  | Load value from memory into A  |
+| LoadIA | 02 | `0010` | Value        | Load intermediate value into A |
+| LoadB  | 03 | `0011` | Src Address  | Load value from memory into B  |
+| StoreA | 04 | `0100` | Dest Address | Store A into memory            |
+| Mov    | 05 | `0101` | Reg0, Reg1   | Copy Reg0 → Reg1               |
+| Add    | 06 | `0110` | Reg0, Reg1   | A = Reg0 + Reg1                |
+| Sub    | 07 | `0111` | Reg0, Reg1   | A = Reg0 - Reg1                |
+| Jump   | 08 | `1000` | Ins Address  | Set PC to address              |
+| JumpZ  | 09 | `1001` | Ins Address  | Jump if ALU result == 0        |
+| JumpNZ | 10 | `1010` | Ins Address  | Jump if ALU result != 0        |
 
 > **Reg0/Reg1 Encoding**:  
 > `00` = A, `01` = B (e.g., `0001` = RegA, RegB)
@@ -92,6 +92,6 @@ and places this sum into memory location 0xE. The value of A is saved into 0xD t
 0xC 0000   ; Halt
 
 ; Data section after execution.
-; 0xD 0101  ; A value before being overwritten.
+; 0xD 0101  ; Value of A saved before addition. 
 ; 0xE 0111  ; Result location
 ```
