@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.31)
-project(simplecpu)
+project(cpu4bit)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -18,10 +18,10 @@ add_library(cpu4
 target_include_directories(cpu4 PUBLIC ./src)
 
 add_executable(cpu4bitsim main.cpp
-        ./test/CPUTest.cpp
-        ./test/MemTest.cpp
-        ./test/Test.h
-        ./test/ALUTest.cpp
+        test/CPUTest.cpp
+        test/MemTest.cpp
+        test/Test.h
+        test/ALUTest.cpp
         test/TestUtils.h
         test/Samples.cpp)
 
