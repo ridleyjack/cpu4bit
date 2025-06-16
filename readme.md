@@ -43,7 +43,7 @@ make
     - ALU Result Buffer (for realism, though only one-cycle ops)
 
 - **Architecture Style**:
-    - Harvard architecture (separate instruction/data concepts)
+    - Von Neumann architecture (shared instruction/data memory)
 
 ## Operation
 
